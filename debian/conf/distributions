@@ -1,0 +1,9 @@
+Codename: bullseye
+Architectures: amd64
+Components: main
+SignWith: 1647F1AA9C8B9029772AAE7269F3C06CED47008B
+
+Codename: pve7
+Architectures: amd64
+Components: main
+SignWith: 1647F1AA9C8B9029772AAE7269F3C06CED47008B

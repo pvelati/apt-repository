@@ -1,0 +1,18 @@
+Package: linux-tools-5.15-dbgsym
+Source: pve-kernel
+Version: 5.15.53-1
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Proxmox Support Team <support@proxmox.com>
+Installed-Size: 6341
+Depends: linux-tools-5.15 (= 5.15.53-1)
+Priority: optional
+Section: debug
+Filename: pool/main/p/pve-kernel/linux-tools-5.15-dbgsym_5.15.53-1_amd64.deb
+Size: 6196768
+SHA256: 22231a3bda4b2330ba156ad690c5becbb6ffe414fac5ebcb72754a57bb7269e6
+SHA1: f0e1fd7bb8130ad99318199c721b2b060fef70af
+MD5sum: fe13cd9988f5381e5dec9b1a7fb12ecc
+Description: debug symbols for linux-tools-5.15
+Build-Ids: cd49c7ed3d5738e27f52d075826627b7a47b28ae
+
