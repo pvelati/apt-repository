@@ -1,0 +1,51 @@
+---
+name: prepare_repository_bullseye
+
+on:  # yamllint disable-line rule:truthy
+  repository_dispatch:
+    types: [trigger_build]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/pvelati/docker-debian-repo-mgmt:main
+    steps:
+      # yamllint disable rule:line-length
+      - name: Print variables from POST
+        run: |
+          echo "codename -> ${{ github.event.client_payload.repository.codename }}"
+          echo "owner    -> ${{ github.event.client_payload.repository.owner }}"
+          echo "name     -> ${{ github.event.client_payload.repository.name }}"
+          echo "tag      -> ${{ github.event.client_payload.repository.tag }}"
+      # yamllint enable rule:line-length
+
+      - uses: actions/checkout@v3
+
+      - name: Configure GPG Key
+        run: |
+          echo -n "$GPG_SIGNING_KEY" | base64 --decode | gpg --import
+        env:
+          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+
+      # yamllint disable rule:line-length
+      - name: Download latest deb files
+        run: |
+          curl \
+           -s https://api.github.com/repos/${{ github.event.client_payload.repository.name }}/releases/tags/${{ github.event.client_payload.repository.tag }} \
+           | jq -r ".assets[] | select(.name | test(\"deb\")) | .browser_download_url" | xargs -P16 wget -P tmp
+      # yamllint enable rule:line-length
+
+      # yamllint disable rule:line-length
+      - name: Create repo structure
+        run: |
+          reprepro -b debian includedeb ${{ github.event.client_payload.repository.codename }} tmp/*.deb
+      # yamllint enable rule:line-length
+
+      - name: Commit report
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add debian
+          git commit -m "GitHub Action execution"
+          git push
