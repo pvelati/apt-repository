@@ -1,0 +1,57 @@
+Package: pve-headers-5.15.64-1-pve-broadwell
+Source: pve-kernel
+Version: 5.15.64-1
+Architecture: amd64
+Maintainer: Proxmox Support Team <support@proxmox.com>
+Installed-Size: 84823
+Depends: coreutils | fileutils (>= 4.0)
+Provides: linux-headers-5.15.64-1-pve-broadwell-amd64
+Priority: optional
+Section: devel
+Filename: pool/main/p/pve-kernel/pve-headers-5.15.64-1-pve-broadwell_5.15.64-1_amd64.deb
+Size: 12495804
+SHA256: d7729b1d21d8dc6a4423e5a1aafaf5e839fdb653634050e69aa21d8d2fcd802d
+SHA1: 94d2fd5e6bc42cabfc4231a52d429932d0d49fbb
+MD5sum: 7328e0c624fa5dd10058a22dc409055d
+Description: Proxmox Kernel Headers
+ This package contains the linux kernel headers
+
+Package: pve-kernel-5.15-broadwell
+Version: 2210191217
+Architecture: all
+Maintainer: Paolo Velati <paolo.velati@gmail.com>
+Installed-Size: 9
+Depends: pve-firmware, pve-kernel-5.15.64-1-pve-broadwell
+Provides: linux-image-amd64, linux-image-generic, pve-kernel-5.15, wireguard-modules (= 1.0.0)
+Multi-Arch: foreign
+Priority: optional
+Section: admin
+Filename: pool/main/p/pve-kernel-5.15-broadwell/pve-kernel-5.15-broadwell_2210191217_all.deb
+Size: 2408
+SHA256: 4b9e89c35e368046f5dbd013593875ee07b7b2737213258b748e4ee9bb43b744
+SHA1: 9ab641c1efd381909a9ab7f2612f0e0d60a47158
+MD5sum: 48e1473fd5abbed23927ac3cb09a01be
+Description: Latest Proxmox VE Kernel Image for Broadwell Arch
+ This is a metapackage which will install the latest available
+ proxmox kernel from the 5.15 series, built with march=broadwell.
+
+Package: pve-kernel-5.15.64-1-pve-broadwell
+Source: pve-kernel
+Version: 5.15.64-1
+Architecture: amd64
+Maintainer: Proxmox Support Team <support@proxmox.com>
+Installed-Size: 389580
+Depends: busybox, initramfs-tools
+Recommends: grub-pc | grub-efi-amd64 | grub-efi-ia32 | grub-efi-arm64
+Suggests: pve-firmware
+Provides: linux-image-5.15.64-1-pve-broadwell-amd64
+Priority: optional
+Section: admin
+Filename: pool/main/p/pve-kernel/pve-kernel-5.15.64-1-pve-broadwell_5.15.64-1_amd64.deb
+Size: 76434124
+SHA256: 03849c68cb96b8849f4af357671f16b128a88d8f430f5b024d099adf79acda86
+SHA1: 126d7c56b73caca649242f0f7def595f00e95197
+MD5sum: 45e919c26f6dd483884c09ef78c37813
+Description: Proxmox Kernel Image
+ This package contains the linux kernel and initial ramdisk used for booting
+
